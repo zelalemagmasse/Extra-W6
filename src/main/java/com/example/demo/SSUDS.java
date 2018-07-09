@@ -25,7 +25,7 @@ public class SSUDS implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try{
-            User user = userRepository.findUserClassByUsername(username);
+            User user = userRepository.findByUsername(username);
             if(user==null)
             {
                 throw new UsernameNotFoundException(username+" not found");

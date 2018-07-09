@@ -13,21 +13,6 @@ public class User {
     private long id;
 
     private String email;
-    private String password;
-    private String username;
-    @ManyToMany(fetch= FetchType.EAGER)
-    private Set<Friend> friends;
-
-    public Set<Role> getRoleOfUsers() {
-        return roleOfUsers;
-    }
-
-    public void setRoleOfUsers(Set<Role> roleOfUsers) {
-        this.roleOfUsers = roleOfUsers;
-    }
-
-    @ManyToMany(fetch= FetchType.EAGER)
-    private Set<Role> roleOfUsers;
 
     public long getId() {
         return id;
@@ -50,7 +35,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = new BCryptPasswordEncoder().encode(password) ;
+        this.password = password;
     }
 
     public String getUsername() {
@@ -61,16 +46,33 @@ public class User {
         this.username = username;
     }
 
-    public Set<Friend> getFriends() {
-        return friends;
+    public Set<Friend> getMyFriends() {
+        return myFriends;
     }
 
-    public void setFriends(Set<Friend> friends) {
-        this.friends = friends;
+    public void setMyFriends(Set<Friend> myFriends) {
+        this.myFriends = myFriends;
     }
+
+    public Set<Role> getRoleOfUsers() {
+        return roleOfUsers;
+    }
+
+    public void setRoleOfUsers(Set<Role> roleOfUsers) {
+        this.roleOfUsers = roleOfUsers;
+    }
+
+    private String password;
+    private String username;
+    @OneToMany(mappedBy = "myFriend")
+    private Set<Friend> myFriends;
+
+    @ManyToMany(fetch= FetchType.EAGER)
+    private Set<Role> roleOfUsers;
+
 
     public User() {
-        this.friends = new HashSet<>();
+
         this.roleOfUsers = new HashSet<>();
     }
     public void  addRole(Role rr){

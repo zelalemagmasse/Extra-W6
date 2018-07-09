@@ -9,33 +9,13 @@ public class Friend {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
-    private String nameOfFFr;
-    private int rankOfFriend;
-    private String urlImage;
-    private String filledBy;
-    public String getFilledBy() {
-        return filledBy;
-    }
-
-    public void setFilledBy(String filledBy) {
-        this.filledBy = filledBy;
-    }
-
-    @ManyToMany(mappedBy = "friends")
-    private List<User> users;
-
-    public String getNameOfFFr() {
-        return nameOfFFr;
-    }
-
-    public void setNameOfFFr(String nameOfFFr) {
-        this.nameOfFFr = nameOfFFr;
-    }
-
-    public Friend() {
-        this.users = new ArrayList<>();
-    }
-
+    private String firstName;
+    private String  lastName;
+    private String nickname;
+    private String image;
+    @ManyToOne
+    private User myFriend;
+    private int myRank;
     public long getId() {
         return id;
     }
@@ -44,29 +24,55 @@ public class Friend {
         this.id = id;
     }
 
-    public int getRankOfFriend() {
-        return rankOfFriend;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setRankOfFriend(int rankOfFriend) {
-        this.rankOfFriend = rankOfFriend;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getUrlImage() {
-        return urlImage;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public User getMyFriend() {
+        return myFriend;
+    }
+
+    public void setMyFriend(User myFriend) {
+        this.myFriend = myFriend;
+    }
+
+    public int getMyRank() {
+        return myRank;
+    }
+
+    public void setMyRank(int myRank) {
+        this.myRank = myRank;
+    }
+
+
 
 
 

@@ -38,4 +38,15 @@ public class CloudinaryConfig {
                 .width(width).height(height)
                 .border("2px_solid_black").crop(action)).imageTag(name);
     }
+    public String createUrl(String name){
+        return cloudinary.url().transformation(new Transformation().width(100).height(100).crop("fill").radius(50).gravity("face")).generate();
+    }
+
+    public String createUrl(String name,int width,int height){
+        return cloudinary.url().transformation(new Transformation().width(width).height(height).crop("fill").radius(50).gravity("face")).generate();
+    }
+
+   public String createSmallImage(String url, int width,int height){
+        return cloudinary.url().transformation(new Transformation().width(width).height(height).crop("fill").radius(50).gravity("face")).type("fetch").generate(url);
+   }
 }

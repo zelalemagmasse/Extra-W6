@@ -11,8 +11,6 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
-    @Column(unique = true)
-    private String role;
 
     public long getId() {
         return id;
@@ -30,19 +28,16 @@ public class Role {
         this.role = role;
     }
 
-    public List<User> getUserslist() {
-        return userslist;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setUserslist(List<User> userslist) {
-        this.userslist = userslist;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
-    public Role() {
-        this.userslist = new ArrayList<>();
-    }
-
-
+    @Column(unique = true)
+    private String role;
     @ManyToMany(mappedBy = "roleOfUsers")
-    private List<User> userslist;
+    private Set<User> users;
 }
