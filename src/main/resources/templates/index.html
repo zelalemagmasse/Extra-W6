@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Friends Site</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-light">
+    <ul class="navbar-nav">
+        <div sec:authorize="isAuthenticated()">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/displayfriend}">Display all Your Friends</a>
+            </li><br/>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/addfriend}">Add A new Friend</a>
+                <br/>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+
+            </li>
+        </div>
+        <div sec:authorize="isAnonymous()">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/login}">login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/register}">Register</a>
+            </li>
+        </div>
+
+    </ul>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1>Welcome to Friends's Site</h1>
+
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

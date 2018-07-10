@@ -15,11 +15,11 @@ public class FriendService {
     FriendRepositroy friends;
 
     public Iterable<Friend> getMyFriends(Authentication myDetails){
-        return friends.findAllByMyFriendOrderByRankOfFriend(user.findByUsername(myDetails.getName()));
+        return friends.findAllByMyFriend(user.findByUsername(myDetails.getName()));
     }
 
     public Iterable<Friend>rankMyFriends(Authentication myDetails){
-        return friends.findAllByMyFriendOrderByRankOfFriend(user.findByUsername(myDetails.getName()));
+        return friends.findAllByMyFriendOrderByMyRank(user.findByUsername(myDetails.getName()));
 
     }
 
